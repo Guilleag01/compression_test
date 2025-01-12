@@ -44,7 +44,7 @@ Notes: All the algorithms were run with the maximum compression mode.
 ## Results
 
 All the tables have the next categories:
- - **Time:** The time the compression process took. Lower is better.
+ - **Time:** Seconds. The time the compression process took. Lower is better.
  - **Compession:** The compression rate after the process. Higher is better.
  - **Time normalized compression:** The compression normalized to the time obtained ny dividing the compression by the time. Higher is better.
 
