@@ -4,7 +4,7 @@
 - [Compression test](#compression-test)
   - [Test setup](#test-setup)
   - [Results](#results)
-    - [Non compressible data](#non-compressible-data)
+    - [Non-compressible data](#non-compressible-data)
     - [Lots of data with mixed types and sizes](#lots-of-data-with-mixed-types-and-sizes)
     - [A lot of many small text files](#a-lot-of-many-small-text-files)
     - [A few text files](#a-few-text-files)
@@ -15,8 +15,8 @@ I made some test on multiple of the compression algorithms and tools found on li
 ## Test setup
 The algorithms were tested on the following situations:
  - **Lots of data with mixed types and sizes:** A lot of various types of files of varying sizes. The total size of all the files is 4.36 GiB
- - **Non compressible data:** A lot of barely compressible files, in thes case jpeg images. The total size of all the files is 0.62 GiB
- - **A lot of many small text files:** A lot small text files, all the files are under 1MB in size. The total size of all the files is 0.96 GiB
+ - **Non-compressible data:** A lot of barely compressible files, in thes case jpeg images. The total size of all the files is 0.62 GiB
+ - **A lot of many small text files:** A lot of small text files, all the files are under 1MB in size. The total size of all the files is 0.96 GiB
  - **A few text files:** A few text files. The total size of all the files is 9.54 MiB
  - **A few mixed files:** A few files varying in size and type. The total size of all the files is 6.66 MiB
 
@@ -42,9 +42,9 @@ The tests were run on a system with the following specs
 Notes: All the algorithms were run with the maximum compression mode.
 
 ## Results
-### Non compressible data
+### Non-compressible data
 
-Test with "Non compressible data" sorted by "Time"
+Test with "Non-compressible data" sorted by "Time"
 
 | Compression Algorithm |    Time | Compression | Time normalized compression |
 | :-------------------- | ------: | ----------: | --------------------------: |
@@ -60,7 +60,7 @@ Test with "Non compressible data" sorted by "Time"
 | PGZIP                 | 1.26777 |     1.00505 |                    0.784826 |
 
 
-Test with "Non compressible data" sorted by "Compression"
+Test with "Non-compressible data" sorted by "Compression"
 
 | Compression Algorithm |    Time | Compression | Time normalized compression |
 | :-------------------- | ------: | ----------: | --------------------------: |
@@ -76,7 +76,7 @@ Test with "Non compressible data" sorted by "Compression"
 | PBZIP2                |  3.8217 |     1.02804 |                    0.254526 |
 
 
-Test with "Non compressible data" sorted by "Time normalized compression"
+Test with "Non-compressible data" sorted by "Time normalized compression"
 
 | Compression Algorithm |    Time | Compression | Time normalized compression |
 | :-------------------- | ------: | ----------: | --------------------------: |
