@@ -3,6 +3,7 @@
 
 - [Compression test](#compression-test)
   - [Test setup](#test-setup)
+    - [Commands](#commands)
   - [Results](#results)
     - [Non compressible data](#non-compressible-data)
     - [Lots of data with mixed types and sizes](#lots-of-data-with-mixed-types-and-sizes)
@@ -40,7 +41,31 @@ The tests were run on a system with the following specs
  - xfs file system
 
 Notes: Algorithms noyed with (Best compression) were run with the options for best compression otherwise default options are used.
- 
+
+### Commands
+
+These were the commands used for each algorithm:
+
+| Algorithm                | Command                                   |
+| :----------------------- | :---------------------------------------- |
+| 7ZIP                     | 7z a <archive> <dir>                      |
+| LZ4                      | tar c -I"lz4" -f <archive> <dir>          |
+| LZ4 (Best compression)   | tar c -I"lz4 -12" -f <archive> <dir>      |
+| LZMA                     | tar c -I"lzma -T0" -f <archive> <dir>     |
+| LZMA (Best compression)  | tar c -I"lzma -9 -T0" -f <archive> <dir>  |
+| PBZIP2                   | tar c -Ipbzip2 -f <archive> <dir>         |
+| PGZIP                    | tar c -I"pigz" -f <archive> <dir>         |
+| PGZIP (Best compression) | tar c -I"pigz --best" -f <archive> <dir>  |
+| PLZIP                    | tar c -I"plzip" -f <archive> <dir>        |
+| PLZIP (Best compression) | tar c -I"plzip -9" -f <archive> <dir>     |
+| RAR                      | rar a <archive> <dir>                     |
+| XZ                       | tar c -I"xz -T0" -f <archive> <dir>       |
+| XZ (Best compression)    | tar c -I"xz -9 -T0" -f <archive> <dir>    |
+| ZIP                      | zip -r <archive> <dir>                    |
+| ZSTD                     | tar c -I"zstd -T0" -f <archive> <dir>     |
+| ZSTD (Best compression)  | tar c -I"zstd -19 -T0" -f <archive> <dir> |
+
+
 ## Results
 
 All the tables have the next categories:
