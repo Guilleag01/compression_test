@@ -46,25 +46,24 @@ Notes: Algorithms noyed with (Best compression) were run with the options for be
 
 These were the commands used for each algorithm:
 
-| Algorithm                | Command                                   |
-| :----------------------- | :---------------------------------------- |
-| 7ZIP                     | 7z a <archive> <dir>                      |
-| LZ4                      | tar c -I"lz4" -f <archive> <dir>          |
-| LZ4 (Best compression)   | tar c -I"lz4 -12" -f <archive> <dir>      |
-| LZMA                     | tar c -I"lzma -T0" -f <archive> <dir>     |
-| LZMA (Best compression)  | tar c -I"lzma -9 -T0" -f <archive> <dir>  |
-| PBZIP2                   | tar c -Ipbzip2 -f <archive> <dir>         |
-| PGZIP                    | tar c -I"pigz" -f <archive> <dir>         |
-| PGZIP (Best compression) | tar c -I"pigz --best" -f <archive> <dir>  |
-| PLZIP                    | tar c -I"plzip" -f <archive> <dir>        |
-| PLZIP (Best compression) | tar c -I"plzip -9" -f <archive> <dir>     |
-| RAR                      | rar a <archive> <dir>                     |
-| XZ                       | tar c -I"xz -T0" -f <archive> <dir>       |
-| XZ (Best compression)    | tar c -I"xz -9 -T0" -f <archive> <dir>    |
-| ZIP                      | zip -r <archive> <dir>                    |
-| ZSTD                     | tar c -I"zstd -T0" -f <archive> <dir>     |
-| ZSTD (Best compression)  | tar c -I"zstd -19 -T0" -f <archive> <dir> |
-
+| Algorithm                | Command                                     |
+| :----------------------- | :------------------------------------------ |
+| 7ZIP                     | 7z a \<archive> \<dir>                      |
+| LZ4                      | tar c -I"lz4" -f \<archive> \<dir>          |
+| LZ4 (Best compression)   | tar c -I"lz4 -12" -f \<archive> \<dir>      |
+| LZMA                     | tar c -I"lzma -T0" -f \<archive> \<dir>     |
+| LZMA (Best compression)  | tar c -I"lzma -9 -T0" -f \<archive> \<dir>  |
+| PBZIP2                   | tar c -Ipbzip2 -f \<archive> \<dir>         |
+| PGZIP                    | tar c -I"pigz" -f \<archive> \<dir>         |
+| PGZIP (Best compression) | tar c -I"pigz --best" -f \<archive> \<dir>  |
+| PLZIP                    | tar c -I"plzip" -f \<archive> \<dir>        |
+| PLZIP (Best compression) | tar c -I"plzip -9" -f \<archive> \<dir>     |
+| RAR                      | rar a \<archive> \<dir>                     |
+| XZ                       | tar c -I"xz -T0" -f \<archive> \<dir>       |
+| XZ (Best compression)    | tar c -I"xz -9 -T0" -f \<archive> \<dir>    |
+| ZIP                      | zip -r \<archive> \<dir>                    |
+| ZSTD                     | tar c -I"zstd -T0" -f \<archive> \<dir>     |
+| ZSTD (Best compression)  | tar c -I"zstd -19 -T0" -f \<archive> \<dir> |
 
 ## Results
 
