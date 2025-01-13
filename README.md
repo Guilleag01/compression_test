@@ -5,21 +5,22 @@
   - [Test setup](#test-setup)
     - [Commands](#commands)
   - [Results](#results)
-    - [Non compressible data](#non-compressible-data)
-    - [Lots of data with mixed types and sizes](#lots-of-data-with-mixed-types-and-sizes)
-    - [A lot of many small text files](#a-lot-of-many-small-text-files)
-    - [A few text files](#a-few-text-files)
-    - [A few mixed files](#a-few-mixed-files)
+    - [Artificial](#artificial)
+    - [Calgary](#calgary)
+    - [Canterbury](#canterbury)
+    - [Large](#large)
 
 I made some test on multiple of the compression algorithms and tools found on linux.
 
 ## Test setup
-The algorithms were tested on the following situations:
+<!-- The algorithms were tested on the following situations:
  - **Lots of data with mixed types and sizes:** A lot of various types of files of varying sizes. The total size of all the files is 4.36 GiB
  - **Non-compressible data:** A lot of barely compressible files, in thes case jpeg images. The total size of all the files is 0.62 GiB
  - **A lot of many small text files:** A lot of small text files, all the files are under 1MB in size. The total size of all the files is 0.96 GiB
  - **A few text files:** A few text files. The total size of all the files is 9.54 MiB
- - **A few mixed files:** A few files varying in size and type. The total size of all the files is 6.66 MiB
+ - **A few mixed files:** A few files varying in size and type. The total size of all the files is 6.66 MiB -->
+
+The algorithms have been tested with the [canterbury corpus](https://en.wikipedia.org/wiki/Canterbury_corpus). Downloaded from [this repository](https://github.com/pfalcon/canterbury-corpus).
 
 The algorithms tested were the following:
  - XZ
@@ -72,337 +73,270 @@ All the tables have the next categories:
  - **Compession:** The compression rate after the process. Higher is better.
  - **Time normalized compression:** The compression normalized to the time obtained ny dividing the compression by the time. Higher is better.
 
-### Non compressible data
+### Artificial
 
-Test with "Non compressible data" sorted by "Time"
+Test with "Artificial" sorted by "Time"
 
-| Compression Algorithm    |     Time | Compression | Time normalized compression |
-| :----------------------- | -------: | ----------: | --------------------------: |
-| ZSTD                     | 0.618463 |     1.00274 |                     1.62134 |
-| LZ4                      | 0.674424 |    0.999934 |                     1.48265 |
-| LZ4 (Best compression)   |  1.31029 |    0.999934 |                     0.76314 |
-| PGZIP (Best compression) |  1.33104 |     1.00505 |                    0.755085 |
-| PGZIP                    |  1.56324 |     1.00505 |                    0.642927 |
-| PBZIP2                   |   4.0795 |     1.02804 |                    0.252002 |
-| RAR                      |  15.2829 |     1.00414 |                   0.0657031 |
-| ZIP                      |  16.6141 |     1.00645 |                   0.0605781 |
-| 7ZIP                     |  19.1198 |     1.01995 |                   0.0533455 |
-| XZ                       |  22.6181 |     1.01087 |                   0.0446928 |
-| PLZIP                    |  23.2036 |      1.0101 |                   0.0435319 |
-| ZSTD (Best compression)  |   29.403 |     1.01446 |                    0.034502 |
-| PLZIP (Best compression) |   39.529 |     1.01846 |                   0.0257648 |
-| XZ (Best compression)    |  105.435 |     1.02264 |                  0.00969931 |
-| LZMA                     |  251.955 |      1.0119 |                  0.00401619 |
-| LZMA (Best compression)  |  355.775 |     1.02573 |                  0.00288308 |
-
-
-Test with "Non compressible data" sorted by "Compression"
-
-| Compression Algorithm    |     Time | Compression | Time normalized compression |
-| :----------------------- | -------: | ----------: | --------------------------: |
-| PBZIP2                   |   4.0795 |     1.02804 |                    0.252002 |
-| LZMA (Best compression)  |  355.775 |     1.02573 |                  0.00288308 |
-| XZ (Best compression)    |  105.435 |     1.02264 |                  0.00969931 |
-| 7ZIP                     |  19.1198 |     1.01995 |                   0.0533455 |
-| PLZIP (Best compression) |   39.529 |     1.01846 |                   0.0257648 |
-| ZSTD (Best compression)  |   29.403 |     1.01446 |                    0.034502 |
-| LZMA                     |  251.955 |      1.0119 |                  0.00401619 |
-| XZ                       |  22.6181 |     1.01087 |                   0.0446928 |
-| PLZIP                    |  23.2036 |      1.0101 |                   0.0435319 |
-| ZIP                      |  16.6141 |     1.00645 |                   0.0605781 |
-| PGZIP (Best compression) |  1.33104 |     1.00505 |                    0.755085 |
-| PGZIP                    |  1.56324 |     1.00505 |                    0.642927 |
-| RAR                      |  15.2829 |     1.00414 |                   0.0657031 |
-| ZSTD                     | 0.618463 |     1.00274 |                     1.62134 |
-| LZ4 (Best compression)   |  1.31029 |    0.999934 |                     0.76314 |
-| LZ4                      | 0.674424 |    0.999934 |                     1.48265 |
+| Compression Algorithm    |       Time | Compression | Time normalized compression |
+| :----------------------- | ---------: | ----------: | --------------------------: |
+| LZ4                      | 0.00500178 |     2.94217 |                     588.224 |
+| PGZIP                    | 0.00692916 |     3.89652 |                     562.336 |
+| ZSTD                     | 0.00734138 |     3.96104 |                     539.549 |
+| LZ4 (Best compression)   | 0.00752068 |     2.94896 |                     392.114 |
+| ZIP                      | 0.00768423 |     3.87759 |                     504.617 |
+| PGZIP (Best compression) | 0.00786114 |     3.89748 |                      495.79 |
+| 7ZIP                     |  0.0215967 |     3.87664 |                     179.502 |
+| PLZIP                    |  0.0232768 |     3.88643 |                     166.966 |
+| RAR                      |  0.0236309 |     3.84245 |                     162.603 |
+| ZSTD (Best compression)  |  0.0301487 |     3.96554 |                     131.532 |
+| XZ                       |   0.030818 |     3.88426 |                     126.039 |
+| LZMA                     |  0.0315187 |     3.88753 |                     123.341 |
+| PBZIP2                   |  0.0370195 |      3.9214 |                     105.928 |
+| PLZIP (Best compression) |   0.040936 |     3.88733 |                     94.9612 |
+| XZ (Best compression)    |  0.0605237 |     3.88426 |                     64.1775 |
+| LZMA (Best compression)  |  0.0609977 |     3.88753 |                     63.7324 |
 
 
-Test with "Non compressible data" sorted by "Time normalized compression"
+Test with "Artificial" sorted by "Compression"
 
-| Compression Algorithm    |     Time | Compression | Time normalized compression |
-| :----------------------- | -------: | ----------: | --------------------------: |
-| ZSTD                     | 0.618463 |     1.00274 |                     1.62134 |
-| LZ4                      | 0.674424 |    0.999934 |                     1.48265 |
-| LZ4 (Best compression)   |  1.31029 |    0.999934 |                     0.76314 |
-| PGZIP (Best compression) |  1.33104 |     1.00505 |                    0.755085 |
-| PGZIP                    |  1.56324 |     1.00505 |                    0.642927 |
-| PBZIP2                   |   4.0795 |     1.02804 |                    0.252002 |
-| RAR                      |  15.2829 |     1.00414 |                   0.0657031 |
-| ZIP                      |  16.6141 |     1.00645 |                   0.0605781 |
-| 7ZIP                     |  19.1198 |     1.01995 |                   0.0533455 |
-| XZ                       |  22.6181 |     1.01087 |                   0.0446928 |
-| PLZIP                    |  23.2036 |      1.0101 |                   0.0435319 |
-| ZSTD (Best compression)  |   29.403 |     1.01446 |                    0.034502 |
-| PLZIP (Best compression) |   39.529 |     1.01846 |                   0.0257648 |
-| XZ (Best compression)    |  105.435 |     1.02264 |                  0.00969931 |
-| LZMA                     |  251.955 |      1.0119 |                  0.00401619 |
-| LZMA (Best compression)  |  355.775 |     1.02573 |                  0.00288308 |
-
-### Lots of data with mixed types and sizes
-
-Test with "Lots of data with mixed types and sizes" sorted by "Time"
-
-| Compression Algorithm    |    Time | Compression | Time normalized compression |
-| :----------------------- | ------: | ----------: | --------------------------: |
-| ZSTD                     | 3.46664 |     2.51686 |                    0.726022 |
-| LZ4                      | 4.21573 |      1.5038 |                    0.356712 |
-| PGZIP                    | 9.69945 |      1.6994 |                    0.175206 |
-| PGZIP (Best compression) | 22.9607 |     1.70312 |                   0.0741754 |
-| PBZIP2                   | 25.7424 |     2.08055 |                   0.0808218 |
-| LZ4 (Best compression)   | 40.0768 |     1.61392 |                   0.0402708 |
-| XZ                       | 75.1801 |     3.15492 |                   0.0419649 |
-| RAR                      | 87.4462 |     2.76305 |                   0.0315972 |
-| PLZIP                    | 91.6147 |     3.08922 |                   0.0337197 |
-| 7ZIP                     | 95.7274 |     3.56446 |                   0.0372356 |
-| ZIP                      | 116.916 |     1.69067 |                   0.0144606 |
-| PLZIP (Best compression) | 148.618 |       3.343 |                    0.022494 |
-| ZSTD (Best compression)  | 161.057 |     3.09079 |                   0.0191906 |
-| XZ (Best compression)    | 240.062 |     3.46817 |                   0.0144469 |
-| LZMA                     | 1046.05 |     3.21621 |                  0.00307463 |
-| LZMA (Best compression)  | 1226.16 |     3.51061 |                  0.00286308 |
+| Compression Algorithm    |       Time | Compression | Time normalized compression |
+| :----------------------- | ---------: | ----------: | --------------------------: |
+| ZSTD (Best compression)  |  0.0301487 |     3.96554 |                     131.532 |
+| ZSTD                     | 0.00734138 |     3.96104 |                     539.549 |
+| PBZIP2                   |  0.0370195 |      3.9214 |                     105.928 |
+| PGZIP (Best compression) | 0.00786114 |     3.89748 |                      495.79 |
+| PGZIP                    | 0.00692916 |     3.89652 |                     562.336 |
+| LZMA (Best compression)  |  0.0609977 |     3.88753 |                     63.7324 |
+| LZMA                     |  0.0315187 |     3.88753 |                     123.341 |
+| PLZIP (Best compression) |   0.040936 |     3.88733 |                     94.9612 |
+| PLZIP                    |  0.0232768 |     3.88643 |                     166.966 |
+| XZ (Best compression)    |  0.0605237 |     3.88426 |                     64.1775 |
+| XZ                       |   0.030818 |     3.88426 |                     126.039 |
+| ZIP                      | 0.00768423 |     3.87759 |                     504.617 |
+| 7ZIP                     |  0.0215967 |     3.87664 |                     179.502 |
+| RAR                      |  0.0236309 |     3.84245 |                     162.603 |
+| LZ4 (Best compression)   | 0.00752068 |     2.94896 |                     392.114 |
+| LZ4                      | 0.00500178 |     2.94217 |                     588.224 |
 
 
-Test with "Lots of data with mixed types and sizes" sorted by "Compression"
+Test with "Artificial" sorted by "Time normalized compression"
 
-| Compression Algorithm    |    Time | Compression | Time normalized compression |
-| :----------------------- | ------: | ----------: | --------------------------: |
-| 7ZIP                     | 95.7274 |     3.56446 |                   0.0372356 |
-| LZMA (Best compression)  | 1226.16 |     3.51061 |                  0.00286308 |
-| XZ (Best compression)    | 240.062 |     3.46817 |                   0.0144469 |
-| PLZIP (Best compression) | 148.618 |       3.343 |                    0.022494 |
-| LZMA                     | 1046.05 |     3.21621 |                  0.00307463 |
-| XZ                       | 75.1801 |     3.15492 |                   0.0419649 |
-| ZSTD (Best compression)  | 161.057 |     3.09079 |                   0.0191906 |
-| PLZIP                    | 91.6147 |     3.08922 |                   0.0337197 |
-| RAR                      | 87.4462 |     2.76305 |                   0.0315972 |
-| ZSTD                     | 3.46664 |     2.51686 |                    0.726022 |
-| PBZIP2                   | 25.7424 |     2.08055 |                   0.0808218 |
-| PGZIP (Best compression) | 22.9607 |     1.70312 |                   0.0741754 |
-| PGZIP                    | 9.69945 |      1.6994 |                    0.175206 |
-| ZIP                      | 116.916 |     1.69067 |                   0.0144606 |
-| LZ4 (Best compression)   | 40.0768 |     1.61392 |                   0.0402708 |
-| LZ4                      | 4.21573 |      1.5038 |                    0.356712 |
+| Compression Algorithm    |       Time | Compression | Time normalized compression |
+| :----------------------- | ---------: | ----------: | --------------------------: |
+| LZ4                      | 0.00500178 |     2.94217 |                     588.224 |
+| PGZIP                    | 0.00692916 |     3.89652 |                     562.336 |
+| ZSTD                     | 0.00734138 |     3.96104 |                     539.549 |
+| ZIP                      | 0.00768423 |     3.87759 |                     504.617 |
+| PGZIP (Best compression) | 0.00786114 |     3.89748 |                      495.79 |
+| LZ4 (Best compression)   | 0.00752068 |     2.94896 |                     392.114 |
+| 7ZIP                     |  0.0215967 |     3.87664 |                     179.502 |
+| PLZIP                    |  0.0232768 |     3.88643 |                     166.966 |
+| RAR                      |  0.0236309 |     3.84245 |                     162.603 |
+| ZSTD (Best compression)  |  0.0301487 |     3.96554 |                     131.532 |
+| XZ                       |   0.030818 |     3.88426 |                     126.039 |
+| LZMA                     |  0.0315187 |     3.88753 |                     123.341 |
+| PBZIP2                   |  0.0370195 |      3.9214 |                     105.928 |
+| PLZIP (Best compression) |   0.040936 |     3.88733 |                     94.9612 |
+| XZ (Best compression)    |  0.0605237 |     3.88426 |                     64.1775 |
+| LZMA (Best compression)  |  0.0609977 |     3.88753 |                     63.7324 |
 
+### Calgary
 
-Test with "Lots of data with mixed types and sizes" sorted by "Time normalized compression"
-
-| Compression Algorithm    |    Time | Compression | Time normalized compression |
-| :----------------------- | ------: | ----------: | --------------------------: |
-| ZSTD                     | 3.46664 |     2.51686 |                    0.726022 |
-| LZ4                      | 4.21573 |      1.5038 |                    0.356712 |
-| PGZIP                    | 9.69945 |      1.6994 |                    0.175206 |
-| PBZIP2                   | 25.7424 |     2.08055 |                   0.0808218 |
-| PGZIP (Best compression) | 22.9607 |     1.70312 |                   0.0741754 |
-| XZ                       | 75.1801 |     3.15492 |                   0.0419649 |
-| LZ4 (Best compression)   | 40.0768 |     1.61392 |                   0.0402708 |
-| 7ZIP                     | 95.7274 |     3.56446 |                   0.0372356 |
-| PLZIP                    | 91.6147 |     3.08922 |                   0.0337197 |
-| RAR                      | 87.4462 |     2.76305 |                   0.0315972 |
-| PLZIP (Best compression) | 148.618 |       3.343 |                    0.022494 |
-| ZSTD (Best compression)  | 161.057 |     3.09079 |                   0.0191906 |
-| ZIP                      | 116.916 |     1.69067 |                   0.0144606 |
-| XZ (Best compression)    | 240.062 |     3.46817 |                   0.0144469 |
-| LZMA                     | 1046.05 |     3.21621 |                  0.00307463 |
-| LZMA (Best compression)  | 1226.16 |     3.51061 |                  0.00286308 |
-
-### A lot of many small text files
-
-Test with "A lot of many small text files" sorted by "Time"
-
-| Compression Algorithm    |    Time | Compression | Time normalized compression |
-| :----------------------- | ------: | ----------: | --------------------------: |
-| ZSTD                     | 1.18429 |     5.13139 |                     4.33289 |
-| LZ4                      | 1.51286 |     3.02663 |                     2.00061 |
-| PGZIP                    | 2.15661 |     4.89074 |                     2.26779 |
-| PGZIP (Best compression) | 3.30062 |     4.95067 |                     1.49992 |
-| LZ4 (Best compression)   | 3.99269 |     4.21619 |                     1.05598 |
-| PBZIP2                   | 4.90839 |     6.37939 |                     1.29969 |
-| PLZIP                    | 22.5141 |     7.14673 |                    0.317434 |
-| ZIP                      | 23.1998 |     3.73557 |                    0.161018 |
-| XZ                       | 25.4004 |      7.3132 |                    0.287917 |
-| RAR                      | 35.5695 |     4.04528 |                    0.113729 |
-| 7ZIP                     | 46.5886 |     7.21744 |                    0.154919 |
-| ZSTD (Best compression)  | 50.0969 |     7.19689 |                    0.143659 |
-| PLZIP (Best compression) | 53.0104 |     7.60392 |                    0.143442 |
-| XZ (Best compression)    | 101.392 |     7.61049 |                     0.07506 |
-| LZMA                     | 289.196 |     7.39904 |                   0.0255848 |
-| LZMA (Best compression)  | 401.785 |     7.65804 |                   0.0190601 |
-
-
-Test with "A lot of many small text files" sorted by "Compression"
-
-| Compression Algorithm    |    Time | Compression | Time normalized compression |
-| :----------------------- | ------: | ----------: | --------------------------: |
-| LZMA (Best compression)  | 401.785 |     7.65804 |                   0.0190601 |
-| XZ (Best compression)    | 101.392 |     7.61049 |                     0.07506 |
-| PLZIP (Best compression) | 53.0104 |     7.60392 |                    0.143442 |
-| LZMA                     | 289.196 |     7.39904 |                   0.0255848 |
-| XZ                       | 25.4004 |      7.3132 |                    0.287917 |
-| 7ZIP                     | 46.5886 |     7.21744 |                    0.154919 |
-| ZSTD (Best compression)  | 50.0969 |     7.19689 |                    0.143659 |
-| PLZIP                    | 22.5141 |     7.14673 |                    0.317434 |
-| PBZIP2                   | 4.90839 |     6.37939 |                     1.29969 |
-| ZSTD                     | 1.18429 |     5.13139 |                     4.33289 |
-| PGZIP (Best compression) | 3.30062 |     4.95067 |                     1.49992 |
-| PGZIP                    | 2.15661 |     4.89074 |                     2.26779 |
-| LZ4 (Best compression)   | 3.99269 |     4.21619 |                     1.05598 |
-| RAR                      | 35.5695 |     4.04528 |                    0.113729 |
-| ZIP                      | 23.1998 |     3.73557 |                    0.161018 |
-| LZ4                      | 1.51286 |     3.02663 |                     2.00061 |
-
-
-Test with "A lot of many small text files" sorted by "Time normalized compression"
-
-| Compression Algorithm    |    Time | Compression | Time normalized compression |
-| :----------------------- | ------: | ----------: | --------------------------: |
-| ZSTD                     | 1.18429 |     5.13139 |                     4.33289 |
-| PGZIP                    | 2.15661 |     4.89074 |                     2.26779 |
-| LZ4                      | 1.51286 |     3.02663 |                     2.00061 |
-| PGZIP (Best compression) | 3.30062 |     4.95067 |                     1.49992 |
-| PBZIP2                   | 4.90839 |     6.37939 |                     1.29969 |
-| LZ4 (Best compression)   | 3.99269 |     4.21619 |                     1.05598 |
-| PLZIP                    | 22.5141 |     7.14673 |                    0.317434 |
-| XZ                       | 25.4004 |      7.3132 |                    0.287917 |
-| ZIP                      | 23.1998 |     3.73557 |                    0.161018 |
-| 7ZIP                     | 46.5886 |     7.21744 |                    0.154919 |
-| ZSTD (Best compression)  | 50.0969 |     7.19689 |                    0.143659 |
-| PLZIP (Best compression) | 53.0104 |     7.60392 |                    0.143442 |
-| RAR                      | 35.5695 |     4.04528 |                    0.113729 |
-| XZ (Best compression)    | 101.392 |     7.61049 |                     0.07506 |
-| LZMA                     | 289.196 |     7.39904 |                   0.0255848 |
-| LZMA (Best compression)  | 401.785 |     7.65804 |                   0.0190601 |
-
-### A few text files
-
-Test with "A few text files" sorted by "Time"
+Test with "Calgary" sorted by "Time"
 
 | Compression Algorithm    |      Time | Compression | Time normalized compression |
 | :----------------------- | --------: | ----------: | --------------------------: |
-| LZ4                      |  0.023663 |      1.1127 |                     47.0225 |
-| PGZIP                    | 0.0332351 |     1.13478 |                     34.1441 |
-| PGZIP (Best compression) | 0.0341132 |     1.13541 |                     33.2838 |
-| ZSTD                     |  0.036551 |     1.61309 |                     44.1327 |
-| LZ4 (Best compression)   |   0.13737 |     1.13707 |                      8.2774 |
-| ZIP                      |  0.237154 |     1.08497 |                     4.57493 |
-| PBZIP2                   |  0.279492 |     1.37485 |                     4.91911 |
-| RAR                      |  0.308938 |     1.10265 |                     3.56915 |
-| 7ZIP                     |  0.426743 |     2.15245 |                     5.04389 |
-| ZSTD (Best compression)  |  0.928809 |     2.15193 |                     2.31687 |
-| XZ                       |   1.49799 |     2.15023 |                     1.43541 |
-| XZ (Best compression)    |   1.55916 |     2.15047 |                     1.37925 |
-| LZMA                     |   1.56381 |      2.1419 |                     1.36967 |
-| LZMA (Best compression)  |   1.57281 |     2.14211 |                     1.36197 |
-| PLZIP                    |   1.64311 |     2.14013 |                     1.30249 |
-| PLZIP (Best compression) |   2.30391 |     2.14365 |                    0.930438 |
+| LZ4                      | 0.0139112 |       1.928 |                     138.593 |
+| PGZIP                    | 0.0204134 |     3.04514 |                     149.174 |
+| ZSTD                     | 0.0300949 |     3.06354 |                     101.796 |
+| PGZIP (Best compression) | 0.0378704 |     3.06692 |                     80.9846 |
+| PBZIP2                   |  0.063678 |     3.65207 |                     57.3522 |
+| RAR                      | 0.0703645 |      3.3894 |                     48.1692 |
+| ZIP                      |  0.124563 |     3.03758 |                     24.3858 |
+| LZ4 (Best compression)   |  0.220412 |      2.6397 |                     11.9762 |
+| 7ZIP                     |  0.315797 |     3.79749 |                     12.0251 |
+| XZ                       |  0.733703 |     3.80797 |                     5.19007 |
+| ZSTD (Best compression)  |  0.745826 |     3.63498 |                     4.87377 |
+| LZMA                     |  0.765039 |     3.80878 |                     4.97855 |
+| XZ (Best compression)    |  0.783136 |     3.80797 |                     4.86246 |
+| PLZIP                    |  0.797309 |     3.79922 |                     4.76505 |
+| LZMA (Best compression)  |  0.869179 |     3.80878 |                     4.38205 |
+| PLZIP (Best compression) |   1.05285 |     3.82562 |                     3.63359 |
 
 
-Test with "A few text files" sorted by "Compression"
-
-| Compression Algorithm    |      Time | Compression | Time normalized compression |
-| :----------------------- | --------: | ----------: | --------------------------: |
-| 7ZIP                     |  0.426743 |     2.15245 |                     5.04389 |
-| ZSTD (Best compression)  |  0.928809 |     2.15193 |                     2.31687 |
-| XZ (Best compression)    |   1.55916 |     2.15047 |                     1.37925 |
-| XZ                       |   1.49799 |     2.15023 |                     1.43541 |
-| PLZIP (Best compression) |   2.30391 |     2.14365 |                    0.930438 |
-| LZMA (Best compression)  |   1.57281 |     2.14211 |                     1.36197 |
-| LZMA                     |   1.56381 |      2.1419 |                     1.36967 |
-| PLZIP                    |   1.64311 |     2.14013 |                     1.30249 |
-| ZSTD                     |  0.036551 |     1.61309 |                     44.1327 |
-| PBZIP2                   |  0.279492 |     1.37485 |                     4.91911 |
-| LZ4 (Best compression)   |   0.13737 |     1.13707 |                      8.2774 |
-| PGZIP (Best compression) | 0.0341132 |     1.13541 |                     33.2838 |
-| PGZIP                    | 0.0332351 |     1.13478 |                     34.1441 |
-| LZ4                      |  0.023663 |      1.1127 |                     47.0225 |
-| RAR                      |  0.308938 |     1.10265 |                     3.56915 |
-| ZIP                      |  0.237154 |     1.08497 |                     4.57493 |
-
-
-Test with "A few text files" sorted by "Time normalized compression"
+Test with "Calgary" sorted by "Compression"
 
 | Compression Algorithm    |      Time | Compression | Time normalized compression |
 | :----------------------- | --------: | ----------: | --------------------------: |
-| LZ4                      |  0.023663 |      1.1127 |                     47.0225 |
-| ZSTD                     |  0.036551 |     1.61309 |                     44.1327 |
-| PGZIP                    | 0.0332351 |     1.13478 |                     34.1441 |
-| PGZIP (Best compression) | 0.0341132 |     1.13541 |                     33.2838 |
-| LZ4 (Best compression)   |   0.13737 |     1.13707 |                      8.2774 |
-| 7ZIP                     |  0.426743 |     2.15245 |                     5.04389 |
-| PBZIP2                   |  0.279492 |     1.37485 |                     4.91911 |
-| ZIP                      |  0.237154 |     1.08497 |                     4.57493 |
-| RAR                      |  0.308938 |     1.10265 |                     3.56915 |
-| ZSTD (Best compression)  |  0.928809 |     2.15193 |                     2.31687 |
-| XZ                       |   1.49799 |     2.15023 |                     1.43541 |
-| XZ (Best compression)    |   1.55916 |     2.15047 |                     1.37925 |
-| LZMA                     |   1.56381 |      2.1419 |                     1.36967 |
-| LZMA (Best compression)  |   1.57281 |     2.14211 |                     1.36197 |
-| PLZIP                    |   1.64311 |     2.14013 |                     1.30249 |
-| PLZIP (Best compression) |   2.30391 |     2.14365 |                    0.930438 |
-
-### A few mixed files
-
-Test with "A few mixed files" sorted by "Time"
-
-| Compression Algorithm    |      Time | Compression | Time normalized compression |
-| :----------------------- | --------: | ----------: | --------------------------: |
-| LZ4                      | 0.0194356 |     1.99491 |                     102.642 |
-| PGZIP                    | 0.0281055 |      2.8725 |                     102.204 |
-| ZSTD                     | 0.0360215 |     3.09782 |                     85.9993 |
-| PGZIP (Best compression) | 0.0510929 |      2.8845 |                     56.4561 |
-| PBZIP2                   | 0.0964587 |      3.3937 |                     35.1829 |
-| RAR                      |   0.16964 |     3.48817 |                     20.5622 |
-| LZ4 (Best compression)   |  0.175575 |     2.56754 |                     14.6237 |
-| ZIP                      |  0.249501 |     2.77821 |                     11.1351 |
-| 7ZIP                     |  0.524823 |     4.15235 |                     7.91191 |
-| XZ                       |   1.22789 |     4.16868 |                       3.395 |
-| LZMA                     |   1.23839 |      4.1687 |                     3.36623 |
-| PLZIP                    |   1.26057 |     4.15287 |                     3.29444 |
-| LZMA (Best compression)  |   1.29071 |      4.1687 |                     3.22976 |
-| ZSTD (Best compression)  |   1.42642 |     3.75015 |                     2.62906 |
-| XZ (Best compression)    |   1.44246 |     4.16868 |                     2.88998 |
-| PLZIP (Best compression) |   2.02732 |     4.18295 |                     2.06329 |
+| PLZIP (Best compression) |   1.05285 |     3.82562 |                     3.63359 |
+| LZMA (Best compression)  |  0.869179 |     3.80878 |                     4.38205 |
+| LZMA                     |  0.765039 |     3.80878 |                     4.97855 |
+| XZ (Best compression)    |  0.783136 |     3.80797 |                     4.86246 |
+| XZ                       |  0.733703 |     3.80797 |                     5.19007 |
+| PLZIP                    |  0.797309 |     3.79922 |                     4.76505 |
+| 7ZIP                     |  0.315797 |     3.79749 |                     12.0251 |
+| PBZIP2                   |  0.063678 |     3.65207 |                     57.3522 |
+| ZSTD (Best compression)  |  0.745826 |     3.63498 |                     4.87377 |
+| RAR                      | 0.0703645 |      3.3894 |                     48.1692 |
+| PGZIP (Best compression) | 0.0378704 |     3.06692 |                     80.9846 |
+| ZSTD                     | 0.0300949 |     3.06354 |                     101.796 |
+| PGZIP                    | 0.0204134 |     3.04514 |                     149.174 |
+| ZIP                      |  0.124563 |     3.03758 |                     24.3858 |
+| LZ4 (Best compression)   |  0.220412 |      2.6397 |                     11.9762 |
+| LZ4                      | 0.0139112 |       1.928 |                     138.593 |
 
 
-Test with "A few mixed files" sorted by "Compression"
+Test with "Calgary" sorted by "Time normalized compression"
 
 | Compression Algorithm    |      Time | Compression | Time normalized compression |
 | :----------------------- | --------: | ----------: | --------------------------: |
-| PLZIP (Best compression) |   2.02732 |     4.18295 |                     2.06329 |
-| LZMA (Best compression)  |   1.29071 |      4.1687 |                     3.22976 |
-| LZMA                     |   1.23839 |      4.1687 |                     3.36623 |
-| XZ (Best compression)    |   1.44246 |     4.16868 |                     2.88998 |
-| XZ                       |   1.22789 |     4.16868 |                       3.395 |
-| PLZIP                    |   1.26057 |     4.15287 |                     3.29444 |
-| 7ZIP                     |  0.524823 |     4.15235 |                     7.91191 |
-| ZSTD (Best compression)  |   1.42642 |     3.75015 |                     2.62906 |
-| RAR                      |   0.16964 |     3.48817 |                     20.5622 |
-| PBZIP2                   | 0.0964587 |      3.3937 |                     35.1829 |
-| ZSTD                     | 0.0360215 |     3.09782 |                     85.9993 |
-| PGZIP (Best compression) | 0.0510929 |      2.8845 |                     56.4561 |
-| PGZIP                    | 0.0281055 |      2.8725 |                     102.204 |
-| ZIP                      |  0.249501 |     2.77821 |                     11.1351 |
-| LZ4 (Best compression)   |  0.175575 |     2.56754 |                     14.6237 |
-| LZ4                      | 0.0194356 |     1.99491 |                     102.642 |
+| PGZIP                    | 0.0204134 |     3.04514 |                     149.174 |
+| LZ4                      | 0.0139112 |       1.928 |                     138.593 |
+| ZSTD                     | 0.0300949 |     3.06354 |                     101.796 |
+| PGZIP (Best compression) | 0.0378704 |     3.06692 |                     80.9846 |
+| PBZIP2                   |  0.063678 |     3.65207 |                     57.3522 |
+| RAR                      | 0.0703645 |      3.3894 |                     48.1692 |
+| ZIP                      |  0.124563 |     3.03758 |                     24.3858 |
+| 7ZIP                     |  0.315797 |     3.79749 |                     12.0251 |
+| LZ4 (Best compression)   |  0.220412 |      2.6397 |                     11.9762 |
+| XZ                       |  0.733703 |     3.80797 |                     5.19007 |
+| LZMA                     |  0.765039 |     3.80878 |                     4.97855 |
+| ZSTD (Best compression)  |  0.745826 |     3.63498 |                     4.87377 |
+| XZ (Best compression)    |  0.783136 |     3.80797 |                     4.86246 |
+| PLZIP                    |  0.797309 |     3.79922 |                     4.76505 |
+| LZMA (Best compression)  |  0.869179 |     3.80878 |                     4.38205 |
+| PLZIP (Best compression) |   1.05285 |     3.82562 |                     3.63359 |
 
+### Canterbury
 
-Test with "A few mixed files" sorted by "Time normalized compression"
+Test with "Canterbury" sorted by "Time"
 
 | Compression Algorithm    |      Time | Compression | Time normalized compression |
 | :----------------------- | --------: | ----------: | --------------------------: |
-| LZ4                      | 0.0194356 |     1.99491 |                     102.642 |
-| PGZIP                    | 0.0281055 |      2.8725 |                     102.204 |
-| ZSTD                     | 0.0360215 |     3.09782 |                     85.9993 |
-| PGZIP (Best compression) | 0.0510929 |      2.8845 |                     56.4561 |
-| PBZIP2                   | 0.0964587 |      3.3937 |                     35.1829 |
-| RAR                      |   0.16964 |     3.48817 |                     20.5622 |
-| LZ4 (Best compression)   |  0.175575 |     2.56754 |                     14.6237 |
-| ZIP                      |  0.249501 |     2.77821 |                     11.1351 |
-| 7ZIP                     |  0.524823 |     4.15235 |                     7.91191 |
-| XZ                       |   1.22789 |     4.16868 |                       3.395 |
-| LZMA                     |   1.23839 |      4.1687 |                     3.36623 |
-| PLZIP                    |   1.26057 |     4.15287 |                     3.29444 |
-| LZMA (Best compression)  |   1.29071 |      4.1687 |                     3.22976 |
-| XZ (Best compression)    |   1.44246 |     4.16868 |                     2.88998 |
-| ZSTD (Best compression)  |   1.42642 |     3.75015 |                     2.62906 |
-| PLZIP (Best compression) |   2.02732 |     4.18295 |                     2.06329 |
+| LZ4                      | 0.0113311 |     2.28631 |                     201.773 |
+| PGZIP                    | 0.0188959 |     3.82866 |                     202.619 |
+| ZSTD                     | 0.0193903 |     4.38005 |                     225.888 |
+| PBZIP2                   | 0.0492446 |     4.94642 |                     100.446 |
+| RAR                      | 0.0585382 |     5.45329 |                     93.1579 |
+| PGZIP (Best compression) | 0.0595274 |     3.84635 |                     64.6147 |
+| ZIP                      | 0.0982521 |     3.81731 |                     38.8522 |
+| 7ZIP                     |  0.331636 |     5.78365 |                     17.4398 |
+| XZ                       |  0.630135 |     5.78572 |                     9.18172 |
+| LZMA                     |  0.638212 |      5.7872 |                     9.06784 |
+| ZSTD (Best compression)  |  0.644854 |     5.45402 |                     8.45777 |
+| XZ (Best compression)    |  0.658105 |     5.78572 |                     8.79149 |
+| LZMA (Best compression)  |  0.674388 |      5.7872 |                     8.58141 |
+| PLZIP                    |  0.709754 |     5.77106 |                     8.13107 |
+| LZ4 (Best compression)   |  0.981928 |     3.01902 |                     3.07458 |
+| PLZIP (Best compression) |   1.07809 |     5.83406 |                     5.41146 |
+
+
+Test with "Canterbury" sorted by "Compression"
+
+| Compression Algorithm    |      Time | Compression | Time normalized compression |
+| :----------------------- | --------: | ----------: | --------------------------: |
+| PLZIP (Best compression) |   1.07809 |     5.83406 |                     5.41146 |
+| LZMA (Best compression)  |  0.674388 |      5.7872 |                     8.58141 |
+| LZMA                     |  0.638212 |      5.7872 |                     9.06784 |
+| XZ (Best compression)    |  0.658105 |     5.78572 |                     8.79149 |
+| XZ                       |  0.630135 |     5.78572 |                     9.18172 |
+| 7ZIP                     |  0.331636 |     5.78365 |                     17.4398 |
+| PLZIP                    |  0.709754 |     5.77106 |                     8.13107 |
+| ZSTD (Best compression)  |  0.644854 |     5.45402 |                     8.45777 |
+| RAR                      | 0.0585382 |     5.45329 |                     93.1579 |
+| PBZIP2                   | 0.0492446 |     4.94642 |                     100.446 |
+| ZSTD                     | 0.0193903 |     4.38005 |                     225.888 |
+| PGZIP (Best compression) | 0.0595274 |     3.84635 |                     64.6147 |
+| PGZIP                    | 0.0188959 |     3.82866 |                     202.619 |
+| ZIP                      | 0.0982521 |     3.81731 |                     38.8522 |
+| LZ4 (Best compression)   |  0.981928 |     3.01902 |                     3.07458 |
+| LZ4                      | 0.0113311 |     2.28631 |                     201.773 |
+
+
+Test with "Canterbury" sorted by "Time normalized compression"
+
+| Compression Algorithm    |      Time | Compression | Time normalized compression |
+| :----------------------- | --------: | ----------: | --------------------------: |
+| ZSTD                     | 0.0193903 |     4.38005 |                     225.888 |
+| PGZIP                    | 0.0188959 |     3.82866 |                     202.619 |
+| LZ4                      | 0.0113311 |     2.28631 |                     201.773 |
+| PBZIP2                   | 0.0492446 |     4.94642 |                     100.446 |
+| RAR                      | 0.0585382 |     5.45329 |                     93.1579 |
+| PGZIP (Best compression) | 0.0595274 |     3.84635 |                     64.6147 |
+| ZIP                      | 0.0982521 |     3.81731 |                     38.8522 |
+| 7ZIP                     |  0.331636 |     5.78365 |                     17.4398 |
+| XZ                       |  0.630135 |     5.78572 |                     9.18172 |
+| LZMA                     |  0.638212 |      5.7872 |                     9.06784 |
+| XZ (Best compression)    |  0.658105 |     5.78572 |                     8.79149 |
+| LZMA (Best compression)  |  0.674388 |      5.7872 |                     8.58141 |
+| ZSTD (Best compression)  |  0.644854 |     5.45402 |                     8.45777 |
+| PLZIP                    |  0.709754 |     5.77106 |                     8.13107 |
+| PLZIP (Best compression) |   1.07809 |     5.83406 |                     5.41146 |
+| LZ4 (Best compression)   |  0.981928 |     3.01902 |                     3.07458 |
+
+### Large
+
+Test with "Large" sorted by "Time"
+
+| Compression Algorithm    |      Time | Compression | Time normalized compression |
+| :----------------------- | --------: | ----------: | --------------------------: |
+| LZ4                      | 0.0310037 |     1.92368 |                     62.0468 |
+| ZSTD                     | 0.0540023 |     3.45881 |                     64.0493 |
+| PGZIP                    | 0.0762684 |     3.42005 |                     44.8423 |
+| PBZIP2                   | 0.0938406 |     4.26873 |                     45.4891 |
+| RAR                      |  0.146149 |     3.94542 |                     26.9958 |
+| PGZIP (Best compression) |  0.204228 |     3.48357 |                     17.0572 |
+| ZIP                      |  0.935222 |     3.42537 |                     3.66263 |
+| LZ4 (Best compression)   |    2.2331 |     2.95496 |                     1.32326 |
+| 7ZIP                     |   2.33647 |     4.34037 |                     1.85766 |
+| XZ                       |   3.90453 |     4.36674 |                     1.11838 |
+| ZSTD (Best compression)  |   3.95725 |     4.37968 |                     1.10675 |
+| XZ (Best compression)    |   4.03401 |     4.36679 |                     1.08249 |
+| LZMA                     |   4.04633 |      4.3675 |                     1.07938 |
+| LZMA (Best compression)  |   4.15799 |     4.36756 |                      1.0504 |
+| PLZIP                    |   4.66973 |     4.33882 |                    0.929137 |
+| PLZIP (Best compression) |    4.9531 |     4.36848 |                    0.881968 |
+
+
+Test with "Large" sorted by "Compression"
+
+| Compression Algorithm    |      Time | Compression | Time normalized compression |
+| :----------------------- | --------: | ----------: | --------------------------: |
+| ZSTD (Best compression)  |   3.95725 |     4.37968 |                     1.10675 |
+| PLZIP (Best compression) |    4.9531 |     4.36848 |                    0.881968 |
+| LZMA (Best compression)  |   4.15799 |     4.36756 |                      1.0504 |
+| LZMA                     |   4.04633 |      4.3675 |                     1.07938 |
+| XZ (Best compression)    |   4.03401 |     4.36679 |                     1.08249 |
+| XZ                       |   3.90453 |     4.36674 |                     1.11838 |
+| 7ZIP                     |   2.33647 |     4.34037 |                     1.85766 |
+| PLZIP                    |   4.66973 |     4.33882 |                    0.929137 |
+| PBZIP2                   | 0.0938406 |     4.26873 |                     45.4891 |
+| RAR                      |  0.146149 |     3.94542 |                     26.9958 |
+| PGZIP (Best compression) |  0.204228 |     3.48357 |                     17.0572 |
+| ZSTD                     | 0.0540023 |     3.45881 |                     64.0493 |
+| ZIP                      |  0.935222 |     3.42537 |                     3.66263 |
+| PGZIP                    | 0.0762684 |     3.42005 |                     44.8423 |
+| LZ4 (Best compression)   |    2.2331 |     2.95496 |                     1.32326 |
+| LZ4                      | 0.0310037 |     1.92368 |                     62.0468 |
+
+
+Test with "Large" sorted by "Time normalized compression"
+
+| Compression Algorithm    |      Time | Compression | Time normalized compression |
+| :----------------------- | --------: | ----------: | --------------------------: |
+| ZSTD                     | 0.0540023 |     3.45881 |                     64.0493 |
+| LZ4                      | 0.0310037 |     1.92368 |                     62.0468 |
+| PBZIP2                   | 0.0938406 |     4.26873 |                     45.4891 |
+| PGZIP                    | 0.0762684 |     3.42005 |                     44.8423 |
+| RAR                      |  0.146149 |     3.94542 |                     26.9958 |
+| PGZIP (Best compression) |  0.204228 |     3.48357 |                     17.0572 |
+| ZIP                      |  0.935222 |     3.42537 |                     3.66263 |
+| 7ZIP                     |   2.33647 |     4.34037 |                     1.85766 |
+| LZ4 (Best compression)   |    2.2331 |     2.95496 |                     1.32326 |
+| XZ                       |   3.90453 |     4.36674 |                     1.11838 |
+| ZSTD (Best compression)  |   3.95725 |     4.37968 |                     1.10675 |
+| XZ (Best compression)    |   4.03401 |     4.36679 |                     1.08249 |
+| LZMA                     |   4.04633 |      4.3675 |                     1.07938 |
+| LZMA (Best compression)  |   4.15799 |     4.36756 |                      1.0504 |
+| PLZIP                    |   4.66973 |     4.33882 |                    0.929137 |
+| PLZIP (Best compression) |    4.9531 |     4.36848 |                    0.881968 |
